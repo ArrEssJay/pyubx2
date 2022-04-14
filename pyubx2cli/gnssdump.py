@@ -272,7 +272,7 @@ class GNSSStreamer:
             if self._quitonerror == ERR_RAISE:
                 raise err
             if self._quitonerror == ERR_LOG:
-                print(err)
+                print(err, file=sys.stderr)
         else:
             self._errorhandler(err)
         self._errcount += 1
@@ -295,7 +295,7 @@ class GNSSStreamer:
             )
             msg = f"\n\n{pre}, {self._msgcount:,} message{mss} processed with {self._errcount:,} error{ers}.\n"
         if loglevel <= self._verbosity and self._verbosity > VERBOSITY_LOW:
-            print(msg)
+            print(msg, file=sys.stderr)
 
     @property
     def datastream(self) -> object:
